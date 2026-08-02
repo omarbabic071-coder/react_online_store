@@ -1,0 +1,1 @@
+A simple template to get started making react web apps. Comes configured with typescript, tailwind and axios. The tsconfig file is set to strcit mode with all the similar properties. Tp get started, install all of the packages with "npm i" (of course). A . env file is also added for storgin APIs.
