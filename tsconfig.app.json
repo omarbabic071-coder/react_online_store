@@ -25,7 +25,6 @@
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noPropertyAccessFromIndexSignature": true,
-    "showComments":false
   },
   "include": ["src"]
 }
