@@ -1,17 +1,24 @@
 import ProductCard from "./ProductCard";
+import type { Product, ProductsResponse } from "./api/api";
 
-function ProductsPage(){
-    const cards = [];
-    for (let i = 0; i < 20; i++) {
-        cards.push(<ProductCard key={i} />);
-    }
+interface ProductsPageProps {
+  data: ProductsResponse | null;
+}
 
-    return(
-        <div className="w-dvw h-dvh pt-20 pl-80 flex flex-wrap gap-4 justify-center items-center">
-            {cards}
-        </div>
-    )
+function ProductsPage({ data }: ProductsPageProps) {
+  if (!data) return null;
 
+  const cards = data.products.map((product, index) => (
+    <ProductCard
+      key={`${product.title}-${index}`}
+      title={product.title}
+      price={product.price}
+      availability={product.availabilityStatus}
+      image={product.images[0] ?? ""}
+    />
+  ));
+
+  return <div className="flex items-center justify-center flex-wrap gap-5">{cards}</div>;
 }
 
 export default ProductsPage
