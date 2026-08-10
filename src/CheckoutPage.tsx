@@ -1,6 +1,4 @@
-function CheckoutPage(){
-    return(
-        <p>hss</p>
-    )
+function CheckoutPage() {
+  return <p>hss</p>;
 }
-export default CheckoutPage
+export default CheckoutPage;
