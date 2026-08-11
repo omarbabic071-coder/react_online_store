@@ -1,14 +1,7 @@
 function SideBar() {
   return (
-    <nav className="h-dvh flex flex-col items-center w-fit bg-gray-300 fixed ">
-      <p>a</p>
-      <p>b</p>
-      <p>c</p>
-      <p>d</p>
-      <p>e</p>
-      <p>f</p>
-      <p>g</p>
-      <p>g</p>
+    <nav className="sticky top-16 self-start w-fit flex flex-col items-center bg-gray-300 p-3 h-[calc(100dvh-4rem)]">
+      <input type="range" name="" id="" />
     </nav>
   );
 }

@@ -19,7 +19,7 @@ function ProductsPage({ data }: ProductsPageProps) {
   ));
 
   return (
-    <div className="flex items-center justify-center flex-wrap gap-5">
+    <div className="grid place-items-start justify-start grid-cols-[repeat(auto-fit,300px)] gap-5 p-10 min-h-[calc(100vh-4rem)] w-full">
       {cards}
     </div>
   );

@@ -20,15 +20,15 @@ function Header({ productsList, setFilteredProductsList }: HeaderProps) {
   };
 
   return (
-    <nav className="w-full mt-o ml-0 p-2 fixed flex justify-evenly items-center bg-gray-300">
+    <nav className="fixed top-0 left-0 right-0 z-20 flex h-16 items-center justify-between gap-4 bg-gray-300 px-4">
       <p className="text-2xl font-sans font-bold">React Store</p>
-      <div className="flex justify-evenly items-center gap-2">
+      <div className="flex items-center gap-2">
         <input
           type="text"
-          className="bg-white border p-1 rounded-xl "
+          className="bg-white border p-1 rounded-xl"
           onChange={handleProductSearch}
         />
-        <button className=" rounded-xl bg-white p-1 border hover:bg-gray-300 active:bg-gray-500 transition">
+        <button className="rounded-xl bg-white p-1 border hover:bg-gray-300 active:bg-gray-500 transition">
           Search
         </button>
       </div>

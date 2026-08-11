@@ -11,7 +11,7 @@ function ProductCard({ title, price, availability, image }: ProductCardProps) {
       <img
         src={image}
         alt="https://www.placehold.co/200"
-        className="w-full h-40 object-cover rounded-xl"
+        className="w-full h-40 object-contain rounded-xl "
       />
       <p className="font-bold text-xl font-sans text-center">{title}</p>
       <div className="flex justify-evenly items-center w-full">
