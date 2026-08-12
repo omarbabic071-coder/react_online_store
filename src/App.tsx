@@ -5,13 +5,10 @@ import CheckoutPage from "./CheckoutPage.tsx";
 
 import { Activity, useEffect, useState } from "react";
 import fetchProductsData, { type Product } from "./api/api.ts";
-import { type ProductsResponse } from "./api/api.ts";
 
 function App() {
-  const [productsData, setProductsData] = useState<ProductsResponse | null>(
-    null,
-  );
-  const [filteredProducts, setFilteredProducts] = useState<Array<Product>>([]);
+  const [productsData, setProductsData] = useState<Product[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -22,11 +19,20 @@ function App() {
     void loadProducts();
   }, []);
 
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const filteredProducts = normalizedQuery
+    ? productsData.filter((product) =>
+        product.title.toLowerCase().includes(normalizedQuery),
+      )
+    : productsData;
+
   return (
     <>
       <Header
-        productsList={productsData}
-        setFilteredProductsList={setFilteredProducts}
+        searchQuery={searchQuery}
+        onSearchQueryChange={setSearchQuery}
+        filteredCount={filteredProducts.length}
+        totalCount={productsData.length}
       />
       <div className="pt-16 flex">
         <SideBar />

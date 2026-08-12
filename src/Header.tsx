@@ -1,22 +1,20 @@
-import { type ChangeEvent, type Dispatch, type SetStateAction } from "react";
-import { type Product, type ProductsResponse } from "./api/api";
+import { type ChangeEvent } from "react";
 
 interface HeaderProps {
-  productsList: ProductsResponse | null;
-  setFilteredProductsList: Dispatch<SetStateAction<Array<Product>>>;
+  searchQuery: string;
+  onSearchQueryChange: (value: string) => void;
+  filteredCount: number;
+  totalCount: number;
 }
 
-function Header({ productsList, setFilteredProductsList }: HeaderProps) {
+function Header({
+  searchQuery,
+  onSearchQueryChange,
+  filteredCount,
+  totalCount,
+}: HeaderProps) {
   const handleProductSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value.toLowerCase();
-
-    if (!productsList?.products) return;
-
-    const filtered = productsList.products.filter((product) =>
-      product.title.toLowerCase().includes(query),
-    );
-
-    setFilteredProductsList(filtered);
+    onSearchQueryChange(e.target.value);
   };
 
   return (
@@ -25,6 +23,7 @@ function Header({ productsList, setFilteredProductsList }: HeaderProps) {
       <div className="flex items-center gap-2">
         <input
           type="text"
+          value={searchQuery}
           className="bg-white border p-1 rounded-xl"
           onChange={handleProductSearch}
         />
@@ -32,7 +31,10 @@ function Header({ productsList, setFilteredProductsList }: HeaderProps) {
           Search
         </button>
       </div>
-      <p>Products: 3</p>
+      <p>
+        Products: {filteredCount}
+        {totalCount > filteredCount ? ` / ${totalCount}` : ""}
+      </p>
     </nav>
   );
 }

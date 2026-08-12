@@ -7,7 +7,7 @@ interface ProductCardProps {
 
 function ProductCard({ title, price, availability, image }: ProductCardProps) {
   return (
-    <div className="p-3 rounded-2xl flex flex-col justify-evenly items-center gap-1 bg-gray-300 w-64 h-80">
+    <div className="p-3 rounded-2xl flex flex-col justify-evenly items-center gap-1 bg-gray-300 w-64 h-80 ">
       <img
         src={image}
         alt="https://www.placehold.co/200"
