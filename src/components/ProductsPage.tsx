@@ -1,11 +1,20 @@
-import type { Product } from "./api/api";
+import type { Product } from "../api/api";
 import ProductCard from "./ProductCard";
+import type { Dispatch, SetStateAction } from "react";
 
 interface ProductsPageProps {
-  data: Array<Product>;
+  data: Product[];
+  setIsDetails: Dispatch<SetStateAction<boolean>>;
+  setIsProducts: Dispatch<SetStateAction<boolean>>;
+  setSelectedProductIndex: Dispatch<SetStateAction<number | null>>;
 }
 
-function ProductsPage({ data }: ProductsPageProps) {
+function ProductsPage({
+  data,
+  setIsDetails,
+  setIsProducts,
+  setSelectedProductIndex,
+}: ProductsPageProps) {
   if (!data) return null;
 
   const cards = data.map((product) =>
@@ -18,6 +27,10 @@ function ProductsPage({ data }: ProductsPageProps) {
           price={price}
           availability={availabilityStatus}
           image={images[0] ?? ""}
+          setIsDetails={setIsDetails}
+          setIsProducts={setIsProducts}
+          setSelectedProductIndex={setSelectedProductIndex}
+          id={id}
         />
       );
     })(),

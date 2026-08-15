@@ -17,6 +17,7 @@ export interface Product {
   reviews: Array<Review>;
   sku: string;
   returnPolicy: string;
+  rating: number;
 }
 
 export interface ProductsResponse {

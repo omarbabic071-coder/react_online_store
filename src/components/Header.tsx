@@ -3,16 +3,9 @@ import { type ChangeEvent } from "react";
 interface HeaderProps {
   searchQuery: string;
   onSearchQueryChange: (value: string) => void;
-  filteredCount: number;
-  totalCount: number;
 }
 
-function Header({
-  searchQuery,
-  onSearchQueryChange,
-  filteredCount,
-  totalCount,
-}: HeaderProps) {
+function Header({ searchQuery, onSearchQueryChange }: HeaderProps) {
   const handleProductSearch = (e: ChangeEvent<HTMLInputElement>) => {
     onSearchQueryChange(e.target.value);
   };
@@ -31,10 +24,7 @@ function Header({
           Search
         </button>
       </div>
-      <p>
-        Products: {filteredCount}
-        {totalCount > filteredCount ? ` / ${totalCount}` : ""}
-      </p>
+      <p>Products: 3</p>
     </nav>
   );
 }
