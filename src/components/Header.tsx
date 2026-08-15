@@ -1,13 +1,23 @@
-import { type ChangeEvent } from "react";
+import {
+  useState,
+  type ChangeEvent,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 
 interface HeaderProps {
-  searchQuery: string;
-  onSearchQueryChange: (value: string) => void;
+  setSearchQuery: Dispatch<SetStateAction<string>>;
 }
 
-function Header({ searchQuery, onSearchQueryChange }: HeaderProps) {
-  const handleProductSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    onSearchQueryChange(e.target.value);
+function Header({ setSearchQuery }: HeaderProps) {
+  const [enteredQuery, setEnteredQuery] = useState<string>("");
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEnteredQuery(e.target.value);
+  };
+
+  const handleProductSearch = () => {
+    setSearchQuery(enteredQuery);
   };
 
   return (
@@ -16,11 +26,14 @@ function Header({ searchQuery, onSearchQueryChange }: HeaderProps) {
       <div className="flex items-center gap-2">
         <input
           type="text"
-          value={searchQuery}
+          value={enteredQuery}
+          onChange={handleInputChange}
           className="bg-white border p-1 rounded-xl"
-          onChange={handleProductSearch}
         />
-        <button className="rounded-xl bg-white p-1 border hover:bg-gray-300 active:bg-gray-500 transition">
+        <button
+          className="rounded-xl bg-white p-1 border hover:bg-gray-300 active:bg-gray-500 transition"
+          onClick={handleProductSearch}
+        >
           Search
         </button>
       </div>

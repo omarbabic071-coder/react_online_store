@@ -26,6 +26,9 @@ function ProductCard({
     setIsProducts((prev) => !prev);
     setSelectedProductIndex(id - 1);
   };
+
+  const availabilityTextColor =
+    availability == "In Stock" ? "text-green-700" : "text-red-700";
   return (
     <div
       className="p-3 rounded-2xl flex flex-col justify-evenly items-center gap-1 bg-gray-300 w-64 h-80 "
@@ -39,7 +42,9 @@ function ProductCard({
       <p className="font-bold text-xl font-sans text-center">{title}</p>
       <div className="flex justify-evenly items-center w-full">
         <p className="text-gray-700">{price}$</p>
-        <p className="text-gray-700">{availability}</p>
+        <p className={`text-gray-700 ${availabilityTextColor}`}>
+          {availability}
+        </p>
       </div>
     </div>
   );

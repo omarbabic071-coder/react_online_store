@@ -9,7 +9,7 @@ import fetchProductsData, { type Product } from "./api/api.ts";
 
 function App() {
   const [productsData, setProductsData] = useState<Product[]>([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedProductIndex, setSelectedProductIndex] = useState<
     number | null
   >(null);
@@ -27,6 +27,7 @@ function App() {
   // const [isCheckout, setIsCheckout] = useState(false);
 
   const normalizedQuery = searchQuery.trim().toLowerCase();
+
   const filteredProducts = normalizedQuery
     ? productsData.filter((product) =>
         product.title.toLowerCase().includes(normalizedQuery),
@@ -35,7 +36,7 @@ function App() {
 
   return (
     <>
-      <Header searchQuery={searchQuery} onSearchQueryChange={setSearchQuery} />
+      <Header setSearchQuery={setSearchQuery} />
       <div className="pt-16 flex">
         <SideBar />
         <main className="flex-1 min-h-[calc(100vh-4rem)]">
