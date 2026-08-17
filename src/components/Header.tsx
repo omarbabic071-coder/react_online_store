@@ -28,7 +28,7 @@ function Header({ setSearchQuery }: HeaderProps) {
           type="text"
           value={enteredQuery}
           onChange={handleInputChange}
-          className="bg-white border p-1 rounded-xl"
+          className="bg-white border p-1 rounded-xl w-120"
         />
         <button
           className="rounded-xl bg-white p-1 border hover:bg-gray-300 active:bg-gray-500 transition"
